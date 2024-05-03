@@ -1,10 +1,12 @@
 from collections import Counter
-
+# defining a function
 def best_poker_hands(playing_cards):
+    # split the card string to a list
     cards = playing_cards.split(', ')
+    # initializing the empty dicts
     ranks = {}
     suits = {}
-
+# iterating each card
     for card in cards:
         rank, suit = card[:-1], card[-1]
         if rank in ranks:
@@ -17,7 +19,7 @@ def best_poker_hands(playing_cards):
             suits[suit] = [rank]
 
     rank_counts = Counter(len(v) for v in ranks.values())
-
+# compares using number of suits
     if len(suits) == 1:
         return 'Flush'
     elif 3 in rank_counts:
@@ -33,7 +35,7 @@ def best_poker_hands(playing_cards):
     else:
         return 'High Card'
 
-# Example input
+# input
 z = 'AS, 10C, 10H, 3D, 3S'
 answer = best_poker_hands(z)
 print(answer)
